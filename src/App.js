@@ -24,16 +24,19 @@ function App() {
 
     try {
       const response = await fetch(url)
-      const data = await response.json()
-      setPhotos((oldPhotos) => {
-        if (query && page === 1) {
-          return data.results
-        } else if (query) {
-          return [...oldPhotos, ...data.results]
-        } else {
-          return [...oldPhotos, data]
-        }
-      })
+      
+if (response.status === 200) {
+  const data = await response.json()
+  setPhotos((oldPhotos) => {
+    if (query && page === 1) {
+      return data.results
+    } else if (query) {
+      return [...oldPhotos, ...data.results]
+    } else {
+      return [...oldPhotos, ...data]
+    }
+  })
+}
       setIsLoading(false)
     } catch (error) {
       console.log(error)
