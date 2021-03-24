@@ -29,7 +29,7 @@ function App() {
         if (query && page === 1) {
           return data.results
         } else if (query) {
-          return [...oldPhotos, ...data.results]
+          return [...oldPhotos, data.results]
         } else {
           return [...oldPhotos, ...data]
         }
